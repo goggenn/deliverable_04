@@ -51,23 +51,23 @@ class Fraction:
         new_numerator = (self.numerator * add.denominator) + (self.denominator * add.numerator)
         new_denominator = self.denominator * add.denominator
         gcd = math.gcd(new_numerator, new_denominator)
-        return Fraction(numerator = (new_numerator/gcd), denominator = (new_denominator/gcd))
+        return Fraction(numerator = int(new_numerator/gcd), denominator = int(new_denominator/gcd))
 
     def __sub__(self, sub: Fraction):
         new_numerator = (self.numerator * sub.denominator) - (self.denominator * sub.numerator)
         new_denominator = self.denominator * sub.denominator
         gcd = math.gcd(new_numerator, new_denominator)
-        return Fraction(numerator = (new_numerator/gcd), denominator = (new_denominator/gcd))
+        return Fraction(numerator = int(new_numerator/gcd), denominator = int(new_denominator/gcd))
 
     def __mul__(self, mul: Fraction):
         new_numerator = self.numerator * mul.numerator
         new_denominator = self.denominator * mul.denominator
         gcd = math.gcd(new_numerator, new_denominator)
-        return Fraction(numerator = (new_numerator/gcd), denominator = (new_denominator/gcd))
+        return Fraction(numerator = int(new_numerator/gcd), denominator = int(new_denominator/gcd))
 
     def __truediv__(self, div: Fraction):
         new_numerator = self.numerator * div.denominator
         new_denominator = self.denominator * div.numerator
         gcd = math.gcd(new_numerator, new_denominator)
-        return Fraction(numerator = (new_numerator/gcd), denominator = (new_denominator/gcd))
+        return Fraction(numerator = int(new_numerator/gcd), denominator = int(new_denominator/gcd))
         
