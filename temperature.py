@@ -42,6 +42,24 @@ class Temperature:
         else:
             return f"{self._value:.2f} °{self._unit}"
 
+    def compare(self, temp: Temperature) -> str:
+        if self._unit != temp._unit:
+            temp.convert_to(self._unit)
+        self_value = round(self._value, 9)
+        temp_value = round(temp._value, 9)
+        if self_value == temp_value:
+            return f"{self.__repr__} == {temp.__repr__}"
+        if self_value != temp_value:
+            return f"{self.__repr__} != {temp.__repr__}"
+        if self_value <= temp_value:
+            return f"{self.__repr__} <= {temp.__repr__}"
+        if self_value < temp_value:
+            return f"{self.__repr__} < {temp.__repr__}"
+        if self_value >= temp_value:
+            return f"{self.__repr__} >= {temp.__repr__}"
+        if self_value > temp_value:
+            return f"{self.__repr__} > {temp.__repr__}"
+
     
         
         
