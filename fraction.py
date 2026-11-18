@@ -1,6 +1,6 @@
 class Fraction:
     def __init__(self, numerator, denominator):
-        if type(numerator) and type(denominator) == int:
+        if type(numerator) == int and type(denominator) == int:
             if denominator > 0:
                 self.numerator = numerator 
                 self.denominator = denominator
@@ -8,4 +8,3 @@ class Fraction:
                 raise ValueError
         else:
             raise ValueError
-    
