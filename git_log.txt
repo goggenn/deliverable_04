@@ -1,0 +1,15 @@
+* b08f247 - Georg R. Hagen, 5 minutes ago : test kjøring og så retting av feilene vi har gjort
+*   e1a5491 - Georg R. Hagen, 11 minutes ago : Merge gbranch inn i main
+|\  
+| * d64e7aa - Georg R. Hagen, 23 minutes ago : muligens en test?, må sikkert endres
+* | b0a685a - Magnus Bigum, 14 minutes ago : lagde magic methods
+|/  
+* 1ac3125 - Georg R. Hagen, 41 minutes ago : endra på init
+* f38709b - Georg R. Hagen, 43 minutes ago : Starten på task 2
+* cd79dee - Georg R. Hagen, 52 minutes ago : Kommentar
+* d1c7b0e - Georg R. Hagen, 55 minutes ago : La til begge delene våres for testen med pytest
+* 593b8cc - Georg R. Hagen, 71 minutes ago : Tentativ ferdig
+* 326b970 - Georg R. Hagen, 2 hours ago : Ferdig med steg6, nå gjenstår å fikse opp i alt som mangler og eventuelle feil
+* 4f7b486 - Georg R. Hagen, 2 hours ago : Nærmere oss ferdig med temperature.py
+* ed30fc4 - Georg R. Hagen, 3 hours ago : Starten
+* af3e71c - Georg R. Hagen, 4 hours ago : Gjort klar starten
