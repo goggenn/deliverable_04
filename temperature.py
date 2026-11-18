@@ -1,4 +1,4 @@
-class temperature:
+class Temperature:
     tolerance = 1e-9
 
     def __init__(self, value, unit):
@@ -23,5 +23,25 @@ class temperature:
         else:
             return (self._value - 32) * (5/9) + 273.15
 
+    def convert_to(self, target_unit: str) -> Temperature:
+        if target_unit == "K":
+            return Temperature(value = self.to_kelvin(), unit = target_unit)
+        elif target_unit == "F":
+            return Temperature(value = self.to_fahrenheit(), unit = target_unit)
+        elif target_unit == "C":
+            return Temperature(value = self.to_celsius(), unit = target_unit)
+        else:
+            return ValueError
+
+    def __repr__(self) -> str:
+        return f"Temperature({self._value}, {self._unit})"
+
+    def __str__(self) -> str:
+        if self._unit == "K":
+            return f"{self._value:.2f} {self._unit}"
+        else:
+            return f"{self._value:.2f} °{self._unit}"
+
     
+        
         
