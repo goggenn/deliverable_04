@@ -1,29 +1,65 @@
 class Temperature:
     tolerance = 1e-9
 
-    def __init__(self, value, unit):
-        self._value = value
-        self._unit = unit
+    def __init__(self, value, unit="C"):
+        unit = unit.upper()
+        if unit == "C":
+            if value >= -273.15:
+                self._unit = unit
+                self._value = value
+            else:
+                raise ValueError
+        elif unit == "F":
+            if value >= -459.67:
+                self._unit = unit
+                self._value = value
+            else:
+                raise ValueError
+        elif unit == "K":
+            if value >= 0:
+                self._unit = unit
+                self._value = value
+            else:
+                raise ValueError
+        else:
+            raise ValueError
+
+    @property
+    def unit(self) -> str:
+        return self._unit
+
+    @property
+    def value(self) -> float:
+        return self._value
 
     def to_celsius(self) -> float:
         if self._unit == "K":
-           return self._value - 273.15
-        else:
+            return self._value - 273.15
+        elif self._unit == "F":
             return (self._value - 32) * (5/9)
+        else:
+            return self._value
+
 
     def to_fahrenheit(self) -> float:
         if self._unit == "K":
-           return (self._value - 273.15) * (9/5) + 32
-        else:
+            return (self._value - 273.15) * (9/5) + 32
+        elif self._unit == "C":
             return self._value * (9/5) + 32
+        else:
+            return self._value
+
 
     def to_kelvin(self) -> float:
         if self._unit == "C":
-            return self._value +273.15
-        else:
+            return self._value + 273.15
+        elif self._unit == "F":
             return (self._value - 32) * (5/9) + 273.15
+        else:
+            return self._value
 
     def convert_to(self, target_unit: str) -> Temperature:
+        target_unit = target_unit.upper()
         if target_unit == "K":
             return Temperature(value = self.to_kelvin(), unit = target_unit)
         elif target_unit == "F":
@@ -31,10 +67,10 @@ class Temperature:
         elif target_unit == "C":
             return Temperature(value = self.to_celsius(), unit = target_unit)
         else:
-            return ValueError
+            raise ValueError
 
     def __repr__(self) -> str:
-        return f"Temperature({self._value}, {self._unit})"
+        return f"Temperature({self._value}, '{self._unit}')"
 
     def __str__(self) -> str:
         if self._unit == "K":
@@ -43,23 +79,27 @@ class Temperature:
             return f"{self._value:.2f} °{self._unit}"
 
     def compare(self, temp: Temperature) -> str:
-        if self._unit != temp._unit:
-            temp.convert_to(self._unit)
-        self_value = round(self._value, 9)
-        temp_value = round(temp._value, 9)
-        if self_value == temp_value:
-            return f"{self.__repr__} == {temp.__repr__}"
-        if self_value != temp_value:
-            return f"{self.__repr__} != {temp.__repr__}"
-        if self_value <= temp_value:
-            return f"{self.__repr__} <= {temp.__repr__}"
-        if self_value < temp_value:
-            return f"{self.__repr__} < {temp.__repr__}"
-        if self_value >= temp_value:
-            return f"{self.__repr__} >= {temp.__repr__}"
-        if self_value > temp_value:
-            return f"{self.__repr__} > {temp.__repr__}"
+        if isinstance(temp, Temperature) == True:
+            temp_value = round(temp._value, 9)
+            if self._unit != temp._unit:
+                temp_equnit = temp.convert_to(self._unit)
+                temp_value = round(temp_equnit._value, 9)
+            self_value = round(self._value, 9)
 
-    
+            if self_value == temp_value:
+                return f"{self.__repr__} == {temp.__repr__}"
+            if self_value != temp_value:
+                return f"{self.__repr__} != {temp.__repr__}"
+            if self_value <= temp_value:
+                return f"{self.__repr__} <= {temp.__repr__}"
+            if self_value < temp_value:
+                return f"{self.__repr__} < {temp.__repr__}"
+            if self_value >= temp_value:
+                return f"{self.__repr__} >= {temp.__repr__}"
+            if self_value > temp_value:
+                return f"{self.__repr__} > {temp.__repr__}"
+        else:
+            raise NotImplementedError
+
         
         
